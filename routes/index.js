@@ -7,11 +7,15 @@ var headline = require('../controllers/headline')
 router.get("/", function(req, res) {
 	res.render("home", { title: "Express" });
 });
+router.get("/saved", function(req, res) {
+	res.render("saved", { title: "Express" });
+});
 // SCRAPE ROUTES //
 // GET - Scrape new articles.
 router.get('/api/fetch', fetch.scrape);
 router.get('/api/headlines', headline.findAll);
-router.put('api/headlines', headline.update);
+router.get('api/headlines/saved', headline.findSaved);
+router.put('api/headlines/:id', headline.save);
 
 module.exports = router;
 

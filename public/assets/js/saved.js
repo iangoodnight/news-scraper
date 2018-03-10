@@ -15,7 +15,7 @@ $(document).ready(function() {
   function initPage() {
     // Empty the article container, run an AJAX request for any saved headlines
     articleContainer.empty();
-    $.get("/api/headlines?saved=true").then(function(data) {
+    $.get("/api/headlines/saved").then(function(data) {
       // If we have headlines, render them to the page
       if (data && data.length) {
         renderArticles(data);

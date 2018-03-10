@@ -10,16 +10,27 @@ module.exports = {
         res.json(dbHeadline);
       });
   },
+  // Find Saved headlines
+  findSaved: function(req, res) {
+  	db.Headline
+  		.find({saved: "true"})
+  		.then(function(dbHeadline) {
+  			res.json(dbHeadline);
+  		});
+  },
   // Delete the specified headline
   delete: function(req, res) {
-    db.Headline.remove({ _id: req.params.id }).then(function(dbHeadline) {
+  	// var objectId = "ObjectId(\"" + req.params.id + "\")";
+    db.Headline.remove({ _id: objectId }).then(function(dbHeadline) {
       res.json(dbHeadline);
     });
   },
   // Update the specified headline
-  update: function(req, res) {
-    db.Headline.findByIdAndUpdate({_id: req.body.id}, {$set: { saved: 'true'}}, { new: true }).then(function(dbHeadline) {
-      console.log("_id: ", req.body.id);
+  save: function(req, res) {
+   	var objectId = "ObjectId(\"" + req.params.id + "\")";
+   	console.log(objectId);
+    db.Headline.updateOne({_id: objectId}, {$set: { saved: 'true'}}).then(function(dbHeadline) {
+      console.log("_id: ", req.body._id);
       res.json(dbHeadline);
     });
   }
