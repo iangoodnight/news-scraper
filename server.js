@@ -28,17 +28,16 @@ var exphbs = require("express-handlebars")
 // set the view engine to use handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main"}));
 app.set("view engine", "handlebars");
-app.set('views', __dirname + '/views');
 
 // Connect to the Mongo DB
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/news-scraper", {
+mongoose.connect("mongodb://localhost/newsScraper", {
   useMongoClient: true
 });
 
 // Routes
-var routes = require("./routes/index.js")
-app.use(routes);
+var routes = require("./routes/")
+app.use("/", routes);
 // Start the server
 app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");

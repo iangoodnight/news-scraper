@@ -1,12 +1,12 @@
-var express = require('express');
-var router = express.Router();
+// var express = require('express');
+// var router = express.Router();
 
-//Require controller modules
-var headline_controller = require('../controllers/headline');
+// //Require controller modules
+// var fetch_controller = require('../controllers/fetch');
 
-// SCRAPE ROUTES //
+// // SCRAPE ROUTES //
 
-// GET - Scrape new articles.
-router.get('/api/fetch', headline_controller.fetch_new);
+// // GET - Scrape new articles.
+// router.get('/api/fetch', fetch_controller.scrapeNew);
 
-module.exports = router;
+// module.exports = router;
