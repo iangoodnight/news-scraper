@@ -13,7 +13,7 @@ $(document).ready(function() {
   function initPage() {
     // Empty the article container, run an AJAX request for any unsaved headlines
     articleContainer.empty();
-    $.get("/api/headlines?saved=false").then(function(data) {
+    $.get("/api/headlines").then(function(data) {
       // If we have headlines, render them to the page
       if (data && data.length) {
         renderArticles(data);
@@ -48,18 +48,18 @@ $(document).ready(function() {
         "<div class='panel panel-default'>",
         "<div class='panel-heading'>",
         "<h3>",
-        "<a class='article-link' target='_blank' href='" + article.url + "'>",
-        article.headline,
+        "<a class='article-link' target='_blank' href='" + article.link + "'>",
+        article.title,
         "</a>",
         "<a class='btn btn-success save'>",
         "Save Article",
         "</a>",
         "</h3>",
         "</div>",
-        "<div class='panel-body'>",
-        article.summary,
-        "</div>",
-        "</div>"
+        // "<div class='panel-body'>",
+        // article.summary,
+        // "</div>",
+        // "</div>"
       ].join("")
     );
     // We attach the article's id to the jQuery element

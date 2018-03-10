@@ -5,7 +5,6 @@ var cheerio = require('cheerio');
 module.exports = {
 	scrape: function(req, res) {
   		// First, we grab the body of the html with request
-  		// Review axios.get - PDS wants to use with NYTimes instead
   		axios.get("http://www.nytimes.com/").then(function(response) {
     		// Then, we load that into cheerio and save it to $ for a shorthand selector
     		var $ = cheerio.load(response.data);
